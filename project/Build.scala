@@ -15,7 +15,12 @@ object ProjectBuild extends Build {
         scalacOptions ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked"),
         fork := true,
         crossPaths := false,
-        resolvers += Resolver.mavenLocal,
+        resolvers += Resolver.mavenLocal
+    )
+
+    // サブプロジェクト共通
+    def defaultProject(nameString: String, path: File) = Project(nameString, path) settings(
+        unmanagedBase <<= unmanagedBase in root,
         libraryDependencies ++= Seq(
             "org.slf4j" % "slf4j-log4j12" % "1.7.5",
             "junit" % "junit" % "4.11" % "test",
@@ -30,26 +35,22 @@ object ProjectBuild extends Build {
         settings = Defaults.defaultSettings ++
             PackageTask.distSettings ++
             Seq(PackageTask.packageDistTask,
-                packageDataTask,
-                libraryDependencies ++= Seq(
-                    "org.codehaus.plexus" % "plexus-classworlds" % "2.4"
-                )
+                packageDataTask
             )
     )
 
-    // メインプロジェクト設定
-    lazy val main = Project("main", file("main")) settings (
-        unmanagedBase <<= unmanagedBase in root
-    )
+    // サブプロジェクト設定
+    lazy val appMain = defaultProject("app-main", file("app-main")) dependsOn (appData)
+    lazy val appData = defaultProject("app-data", file("app-data"))
 
     // カスタムタスク
     lazy val packageData = TaskKey[Unit]("package-data")
-    def packageDataTask = packageData <<= (streams, PackageTask.packageDist, baseDirectory in main in Compile) map {
-        (out, dist, mainDir) => {
+    def packageDataTask = packageData <<= (streams, PackageTask.packageDist, baseDirectory in appData in Compile) map {
+        (out, dist, dataDir) => {
             out.log.info("Copy resource files")
-            IO.copyDirectory(mainDir / "src/main/resources", dist)
+            IO.copyDirectory(dataDir / "src/main/resources", dist)
         }
     }
 }
 
-// vim: ts=4 sw=4 et:
+// vim: set ts=4 sw=4 et:
