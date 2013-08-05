@@ -1,5 +1,6 @@
 import sbt._
 import Keys._
+import com.typesafe.sbteclipse.plugin.EclipsePlugin._
 
 object ProjectBuild extends Build {
     override lazy val settings = super.settings ++ buildSettings
@@ -8,13 +9,30 @@ object ProjectBuild extends Build {
         organization := "com.github.tkmtmkt",
         description := "",
         javacOptions in Compile := Seq(
-            "-encoding", "UTF-8", "-source", "1.7", "-target", "1.7", "-Xlint:all,-unchecked"),
+            "-encoding", "UTF-8",
+            "-source", "1.7",
+            "-target", "1.7",
+            "-Xlint:all,-unchecked"),
         javacOptions in doc := Seq(
-            "-encoding", "UTF-8", "-source", "1,7", "-quiet"),
+            "-encoding", "UTF-8",
+            "-source", "1,7",
+            "-quiet"),
         scalaVersion := "2.10.2",
-        scalacOptions ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked"),
+        scalacOptions ++= Seq(
+            "-encoding", "UTF-8",
+            "-deprecation",
+            "-unchecked"),
         fork := true,
-        crossPaths := false
+        crossPaths := false,
+        EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE17),
+        EclipseKeys.skipParents in ThisBuild := true,
+        EclipseKeys.withSource := true,
+        //EclipseKeys.classpathTransformerFactories := Seq(
+        //),
+        EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource,
+        EclipseKeys.projectFlavor := EclipseProjectFlavor.Scala,
+        EclipseKeys.relativizeLibs := false,
+        EclipseKeys.skipProject := false
     )
 
     // サブプロジェクト共通
@@ -30,7 +48,7 @@ object ProjectBuild extends Build {
 
     // ルートプロジェクト設定
     lazy val nonRoots = projects.filter(_ != root).map(p => LocalProject(p.id))
-    lazy val root: Project = Project("root", file("."), aggregate = nonRoots,
+    lazy val root = Project("root", file("."), aggregate = nonRoots,
         settings = Defaults.defaultSettings ++
             PackageTask.distSettings ++
             Seq(PackageTask.packageDistTask, distTask)
