@@ -7,15 +7,14 @@ object ProjectBuild extends Build {
         version := "0.1-SNAPSHOT",
         organization := "com.github.tkmtmkt",
         description := "",
-        javaOptions in Compile := Seq(
+        javacOptions in Compile := Seq(
             "-encoding", "UTF-8", "-source", "1.7", "-target", "1.7", "-Xlint:all,-unchecked"),
-        javaOptions in doc := Seq(
+        javacOptions in doc := Seq(
             "-encoding", "UTF-8", "-source", "1,7", "-quiet"),
         scalaVersion := "2.10.2",
         scalacOptions ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked"),
         fork := true,
-        crossPaths := false,
-        resolvers += Resolver.mavenLocal
+        crossPaths := false
     )
 
     // サブプロジェクト共通
@@ -34,9 +33,7 @@ object ProjectBuild extends Build {
     lazy val root: Project = Project("root", file("."), aggregate = nonRoots,
         settings = Defaults.defaultSettings ++
             PackageTask.distSettings ++
-            Seq(PackageTask.packageDistTask,
-                packageDataTask
-            )
+            Seq(PackageTask.packageDistTask, distTask)
     )
 
     // サブプロジェクト設定
@@ -44,9 +41,14 @@ object ProjectBuild extends Build {
     lazy val appData = defaultProject("app-data", file("app-data"))
 
     // カスタムタスク
-    lazy val packageData = TaskKey[Unit]("package-data")
-    def packageDataTask = packageData <<= (streams, PackageTask.packageDist, baseDirectory in appData in Compile) map {
-        (out, dist, dataDir) => {
+    lazy val dist = TaskKey[Unit]("dist")
+    def distTask = dist <<= (streams, PackageTask.packageDist,
+        baseDirectory in root in Compile, baseDirectory in appData in Compile) map {
+        (out, dist, rootDir, dataDir) => {
+
+            out.log.info("Copy distribution files")
+            IO.copyDirectory(rootDir / "src/dist", dist)
+
             out.log.info("Copy resource files")
             IO.copyDirectory(dataDir / "src/main/resources", dist)
         }
