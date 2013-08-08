@@ -29,15 +29,14 @@ scala project template using sbt
 
     template-scala-sbt/
     ├─project/
-    │  ├─build.properties
     │  ├─Build.scala
-    │  ├─Package.scala
+    │  ├─build.properties
     │  └─plugins.sbt
-    └─sbt/
-        ├─boot/
-        ├─repository/
-        ├─sbt-launch.jar
-        ├─sbt
-        └─sbt.bat
+    ├─sbt/
+    │  ├─boot/
+    │  ├─repository/
+    │  └─sbt-launch.jar
+    ├─sbt
+    └─sbt.bat
 
 <!-- vim: set ts=4 sw=4 et: -->
