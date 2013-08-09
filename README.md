@@ -13,13 +13,25 @@ scala project template using sbt
     ├─src/
     │  └─dist/
     │      └─bin/
-    ├─main/
+    ├─app-main/
     │  └─src/
     │      ├─main/
     │      │  ├─java/
     │      │  ├─resources/
     │      │  └─scala/
     │      └─test/
+    │          ├─java/
+    │          ├─resources/
+    │          └─scala/
+    ├─app-main/
+    │  └─src/
+    │      ├─main/
+    │      │  ├─java/
+    │      │  ├─resources/
+    │      │  └─scala/
+    │      └─test/
+    │          ├─java/
+    │          ├─resources/
     │          └─scala/
     ├─.gitignore
     └─README.md
@@ -30,13 +42,14 @@ scala project template using sbt
     template-scala-sbt/
     ├─project/
     │  ├─Build.scala
+    │  ├─MyEclipse.scala
     │  ├─build.properties
     │  └─plugins.sbt
     ├─sbt/
     │  ├─boot/
     │  ├─repository/
     │  └─sbt-launch.jar
-    ├─sbt
-    └─sbt.bat
+    ├─sbtl
+    └─sbtl.bat
 
 <!-- vim: set ts=4 sw=4 et: -->
