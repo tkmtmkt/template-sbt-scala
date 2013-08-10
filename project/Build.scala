@@ -27,9 +27,13 @@ object ProjectBuild extends Build
     )
 
   // SETTING: サブプロジェクト共通設定
-  def subProject(nameString: String, path: File) = Project(nameString, path,
-    settings = Defaults.defaultSettings ++ buildSettings ++ MyEclipse.eclipseSettings
-    ) settings(
+  import com.typesafe.sbt.SbtSite.site
+  def subProject(nameString: String, path: File) = Project(
+    id = nameString,
+    base = path,
+    settings = Defaults.defaultSettings ++ buildSettings ++ MyEclipse.eclipseSettings ++
+    site.settings ++ site.includeScaladoc() ++ site.sphinxSupport())
+    .settings(
       unmanagedBase <<= unmanagedBase in root,
       retrieveManaged := true,
       libraryDependencies ++= Seq(
@@ -43,12 +47,14 @@ object ProjectBuild extends Build
   // PROJECT: ルートプロジェクト設定
   import xerial.sbt.Pack._
   lazy val nonRoots = projects.filter(_ != root).map(p => LocalProject(p.id))
-  lazy val root: Project = Project("root", file("."), aggregate = nonRoots,
-    settings = Defaults.defaultSettings ++ buildSettings ++ packSettings ++ Seq(
-        packMain    := Map("launch" -> "com.github.tkmtmkt.Main"),
-        packJvmOpts := Map("launch" -> Seq("-Xmx512m")),
-        distTask
-      )
+  lazy val root: Project = Project(
+    id = "root",
+    base = file("."),
+    aggregate = nonRoots,
+    settings = Defaults.defaultSettings ++ buildSettings ++ Seq(distTask) ++ packSettings)
+    .settings(
+      packMain    := Map("launch" -> "com.github.tkmtmkt.Main"),
+      packJvmOpts := Map("launch" -> Seq("-Xmx512m"))
     )
 
   // PROJECT: サブプロジェクト設定
