@@ -1,7 +1,7 @@
-template-scala-sbt
+template-sbt-scala
 ==================
 
-scala project template using sbt
+sbt project template for scala
 
 概要
 ----
