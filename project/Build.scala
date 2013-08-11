@@ -1,9 +1,10 @@
 import sbt._
 import Keys._
 
-object ProjectBuild extends Build
+object AppBuild extends Build
 {
   // SETTING: プロジェクト共通設定
+  import com.typesafe.sbt.SbtSite.site
   lazy val buildSettings = Seq(
       organization  := "com.github.tkmtmkt",
       version       := "0.1-SNAPSHOT",
@@ -24,15 +25,13 @@ object ProjectBuild extends Build
         "-quiet"),
       fork := true,
       crossPaths := false
-    )
+    ) ++ site.settings ++ site.includeScaladoc() ++ site.sphinxSupport()
 
   // SETTING: サブプロジェクト共通設定
-  import com.typesafe.sbt.SbtSite.site
   def subProject(nameString: String, path: File) = Project(
     id = nameString,
     base = path,
-    settings = Defaults.defaultSettings ++ buildSettings ++ MyEclipse.eclipseSettings ++
-    site.settings ++ site.includeScaladoc() ++ site.sphinxSupport())
+    settings = Defaults.defaultSettings ++ buildSettings ++ MyEclipse.eclipseSettings)
     .settings(
       unmanagedBase <<= unmanagedBase in root,
       retrieveManaged := true,
@@ -54,7 +53,8 @@ object ProjectBuild extends Build
     settings = Defaults.defaultSettings ++ buildSettings ++ Seq(distTask) ++ packSettings)
     .settings(
       packMain    := Map("launch" -> "com.github.tkmtmkt.Main"),
-      packJvmOpts := Map("launch" -> Seq("-Xmx512m"))
+      packJvmOpts := Map("launch" -> Seq("-Xmx512m")),
+      packExclude := Seq(root.id)
     )
 
   // PROJECT: サブプロジェクト設定
@@ -69,15 +69,11 @@ object ProjectBuild extends Build
       baseDirectory in root in Compile,
       baseDirectory in appData in Compile
     ) map {
-      (out, dist, rootDir, dataDir) =>
+      (out, pack, rootDir, dataDir) =>
       {
-        // 配布ファイルコピー
-        out.log.info("Copy distribution files")
-        IO.copyDirectory(rootDir / "src/dist", dist)
-
         // リソースファイルコピー
         out.log.info("Copy resource files")
-        IO.copyDirectory(dataDir / "src/main/resources", dist)
+        IO.copyDirectory(dataDir / "src/main/resources", pack)
       }
     }
 }
