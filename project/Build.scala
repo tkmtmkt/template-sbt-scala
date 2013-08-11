@@ -8,7 +8,7 @@ object AppBuild extends Build
   lazy val buildSettings = Seq(
       organization  := "com.github.tkmtmkt",
       version       := "0.1-SNAPSHOT",
-      description   := "",
+      description   := "sbtプロジェクトテンプレート",
       scalaVersion  := "2.10.2",
       scalacOptions := Seq(
         "-encoding", "UTF-8",

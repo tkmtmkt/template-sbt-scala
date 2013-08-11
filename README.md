@@ -89,22 +89,27 @@ Eclipseプロジェクト設定ファイル生成
     └─sbtl.bat                sbt起動スクリプト（Windows）
 
 
-### 
+### sbt出力
 
     template-scala-sbt/
+    ├─app-data/
+    │  └─target/
+    │      ├─classes/        compile タスクの出力
+    │      ├─api/            doc タスクの出力
+    │      ├─site/           make-site タスクの出力
+    │      ├─app-main-0.1-SNAPSHOT.jar           package-bin タスクの出力
+    │      ├─app-main-0.1-SNAPSHOT-sources.jar   package-src タスクの出力
+    │      ├─app-main-0.1-SNAPSHOT-javadoc.jar   package-doc タスクの出力
+    │      └─app-main-0.1-SNAPSHOT-site.zip      package-site タスクの出力
     ├─app-main/
     │  └─target/
-    │      ├─app-main-0.1-SNAPSHOT.jar           package-bin で作成する
-    │      ├─app-main-0.1-SNAPSHOT-sources.jar   package-src で作成する
-    │      ├─app-main-0.1-SNAPSHOT-javadoc.jar   package-doc で作成する
-    │      └─app-main-0.1-SNAPSHOT-site.zip      package-site で作成する
-    ├─lib_managed/            依存ライブラリのコピー
+    ├─lib_managed/            update タスクの出力
     ├─sbt/
     │  ├─boot/               自動ダウンロードしたsbt本体
     │  └─repository/         依存ライブラリのダウンロードキャッシュ
     └─target/
-        ├─dist/               dist で作成する
-        └─pack/               pack で作成する
+        ├─dist/               dist タスクの出力
+        └─pack/               pack タスクの出力
             ├─bin/            src/pack/binの内容
             └─lib/            依存ライブラリとビルドしたjarファイル
 
@@ -112,7 +117,38 @@ Eclipseプロジェクト設定ファイル生成
 参考
 ----
 
-* [始めるsbt](http://scalajp.github.io/sbt-getting-started-guide-ja/)
+### sbt説明
 * [sbt - sbt Documentation](http://www.scala-sbt.org/)
+* [始めるsbt](http://scalajp.github.io/sbt-getting-started-guide-ja/)
+
+### プラグイン
+
+#### IDE
+* [sbteclipse](https://github.com/typesafehub/sbteclipse)
+
+#### コード生成
+* [sbt-antlr](https://github.com/stefri/sbt-antlr)
+
+#### ソースコード静的解析
+* [cpd4sbt](https://bitbucket.org/jmhofer/cpd4sbt)
+* [findbugs4sbt](https://bitbucket.org/jmhofer/findbugs4sbt)
+* [scalastyle](https://github.com/scalastyle/scalastyle-sbt-plugin)
+* [sbt-stats](https://github.com/orrsella/sbt-stats)
+
+#### テスト
+
+#### カバレッジ
+* [cobertura4sbt](https://bitbucket.org/jmhofer/cobertura4sbt)
+* [jacoco4sbt](https://bitbucket.org/jmhofer/jacoco4sbt)
+
+#### ドキュメンテーション
+* [sbt-site](https://github.com/sbt/sbt-site)
+
+#### リリース
+* [sbt-release](https://github.com/sbt/sbt-release)
+* [sbt-pack](https://github.com/xerial/sbt-pack)
+
+#### その他
+* [ant4sbt](https://bitbucket.org/jmhofer/ant4sbt)
 
 <!-- vim: set ts=4 sw=4 et: -->
