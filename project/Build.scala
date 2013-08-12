@@ -23,8 +23,8 @@ object AppBuild extends Build
         "-encoding", "UTF-8",
         "-source", "1,7",
         "-quiet"),
-      fork := true,
-      crossPaths := false
+      crossPaths := false,
+      fork := true
     ) ++ site.settings ++ site.includeScaladoc() ++ site.sphinxSupport()
 
   // SETTING: サブプロジェクト共通設定

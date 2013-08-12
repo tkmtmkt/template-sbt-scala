@@ -32,6 +32,10 @@ jarファイル作成
 
     pack
 
+ソースコード統計表示
+
+    stats
+
 Eclipseプロジェクト設定ファイル生成
 
     eclipse
@@ -136,6 +140,9 @@ Eclipseプロジェクト設定ファイル生成
 * [sbt-stats](https://github.com/orrsella/sbt-stats)
 
 #### テスト
+* [junit-interface](https://github.com/szeiger/junit-interface)
+* [junit_xml_listener](https://github.com/ijuma/junit_xml_listener)
+* [sbt-simple-junit-xml-reporter-plugin](https://github.com/bseibel/sbt-simple-junit-xml-reporter-plugin)
 
 #### カバレッジ
 * [cobertura4sbt](https://bitbucket.org/jmhofer/cobertura4sbt)

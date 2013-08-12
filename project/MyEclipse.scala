@@ -10,15 +10,15 @@ object MyEclipse
   import com.typesafe.sbteclipse.plugin.EclipsePlugin._
   import EclipseKeys._
   lazy val eclipseSettings = Seq(
-      executionEnvironment          := Some(EclipseExecutionEnvironment.JavaSE17),
-      skipParents in ThisBuild      := true,
-      skipProject                   := false,
-      projectTransformerFactories   := Seq(ProjectTransformerFactory),
-      projectFlavor                 := EclipseProjectFlavor.Scala,
-      classpathTransformerFactories := Seq(ClasspathEntryTransformerFactory),
-      createSrc                     := EclipseCreateSrc.Default + EclipseCreateSrc.Resource,
-      withSource                    := true,
-      relativizeLibs                := false
+    executionEnvironment          := Some(EclipseExecutionEnvironment.JavaSE17),
+    skipParents in ThisBuild      := true,
+    skipProject                   := false,
+    projectTransformerFactories   := Seq(ProjectTransformerFactory),
+    projectFlavor                 := EclipseProjectFlavor.Scala,
+    classpathTransformerFactories := Seq(ClasspathEntryTransformerFactory),
+    createSrc                     := EclipseCreateSrc.Default + EclipseCreateSrc.Resource,
+    withSource                    := true,
+    relativizeLibs                := false
     )
 
   import scala.xml.{ Attribute, Elem, MetaData, Node, Null, Text }
@@ -77,7 +77,7 @@ object MyEclipse
   }
 
   /**
-   * プラグインが生成する.classpathファイルをカスタマイズするための設定
+   * プラグインが生成する.projectファイルをカスタマイズするための設定
    */
   private object ProjectTransformerFactory extends EclipseTransformerFactory[RewriteRule]
   {
