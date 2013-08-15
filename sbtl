@@ -4,6 +4,8 @@ SCRIPT_DIR=`dirname $0`
 SBT_OPTS="-Xms512M -Xmx1024M -Xss1M"
 SBT_OPTS="$SBT_OPTS -XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M"
 SBT_OPTS="$SBT_OPTS -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
+SBT_OPTS="$SBT_OPTS -Duser.language=en"
+SBT_OPTS="$SBT_OPTS -Dfile.encoding=UTF-8"
 SBT_OPTS="$SBT_OPTS -Dsbt.ivy.home=$SCRIPT_DIR/sbt/repository"
 SBT_OPTS="$SBT_OPTS -Dsbt.boot.directory=$SCRIPT_DIR/sbt/boot"
 
