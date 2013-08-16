@@ -11,7 +11,7 @@ object MyEclipse
   import EclipseKeys._
   lazy val eclipseSettings = Seq(
     executionEnvironment          := Some(EclipseExecutionEnvironment.JavaSE17),
-    skipParents in ThisBuild      := true,
+    skipParents in ThisBuild      := false,
     skipProject                   := false,
     projectTransformerFactories   := Seq(ProjectTransformerFactory),
     projectFlavor                 := EclipseProjectFlavor.Scala,

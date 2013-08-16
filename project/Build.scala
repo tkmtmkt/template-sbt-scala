@@ -25,13 +25,13 @@ object AppBuild extends Build
         "-quiet"),
       crossPaths := false,
       fork := true
-    ) ++ site.settings ++ site.includeScaladoc() ++ site.sphinxSupport()
+    ) ++ site.settings ++ site.includeScaladoc() ++ site.sphinxSupport() ++ MyEclipse.eclipseSettings
 
   // SETTING: サブプロジェクト共通設定
   def subProject(nameString: String, path: File) = Project(
     id = nameString,
     base = path,
-    settings = Defaults.defaultSettings ++ buildSettings ++ MyEclipse.eclipseSettings)
+    settings = Defaults.defaultSettings ++ buildSettings)
     .settings(
       unmanagedBase <<= unmanagedBase in root,
       retrieveManaged := true,
