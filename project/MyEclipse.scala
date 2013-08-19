@@ -1,14 +1,14 @@
 import sbt._
 import Keys._
 
-object MyEclipse
-{
-  // Eclipseクラスパス変数
-  private val eclipseClasspathVar = "PROJECT_HOME"
+import com.typesafe.sbteclipse.core.{ Validation, setting }
+import com.typesafe.sbteclipse.plugin.EclipsePlugin._
+import com.typesafe.sbteclipse.plugin.EclipsePlugin.EclipseKeys._
+import scala.xml.{ Attribute, Elem, MetaData, Node, Null, Text }
+import scala.xml.transform.RewriteRule
 
+object MyEclipse {
   // PLUGIN: sbteclipse設定
-  import com.typesafe.sbteclipse.plugin.EclipsePlugin._
-  import EclipseKeys._
   lazy val eclipseSettings = Seq(
     executionEnvironment          := Some(EclipseExecutionEnvironment.JavaSE17),
     skipParents in ThisBuild      := false,
@@ -21,9 +21,8 @@ object MyEclipse
     relativizeLibs                := false
     )
 
-  import scala.xml.{ Attribute, Elem, MetaData, Node, Null, Text }
-  import scala.xml.transform.RewriteRule
-  import com.typesafe.sbteclipse.core.{ Validation, setting }
+  // Eclipseクラスパス変数
+  private val eclipseClasspathVar = "PROJECT_HOME"
 
   /**
    * プラグインが生成する.classpathファイルをカスタマイズするための設定
