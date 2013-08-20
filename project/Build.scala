@@ -3,16 +3,18 @@ import Keys._
 
 import com.orrsella.sbtstats.StatsPlugin._
 import com.typesafe.sbt.SbtSite.site
+import de.johoop.findbugs4sbt.FindBugs.findbugsSettings
 import de.johoop.jacoco4sbt.{ HTMLReport, XMLReport }
 import de.johoop.jacoco4sbt.JacocoPlugin.jacoco
+import net.ruidoblanco.checkstyle4sbt.CheckStyle.checkstyleSettings
 import xerial.sbt.Pack._
 
 object AppBuild extends Build {
   // SETTING: プロジェクト共通設定
   lazy val buildSettings = Seq(
       organization  := "com.github.tkmtmkt",
-      version       := "0.1-SNAPSHOT",
       description   := "sbtプロジェクトテンプレート",
+      version       := "0.1-SNAPSHOT",
       scalaVersion  := "2.10.2",
       scalacOptions := Seq(
         "-encoding", "UTF-8",
@@ -36,15 +38,16 @@ object AppBuild extends Build {
     id = nameString,
     base = path,
     settings = Defaults.defaultSettings ++ buildSettings ++ site.includeScaladoc()
-            ++ jacoco.settings)
+            ++ checkstyleSettings ++ findbugsSettings ++ jacoco.settings)
     .settings(
       unmanagedBase <<= unmanagedBase in root,
       retrieveManaged := true,
       libraryDependencies ++= Seq(
         "org.slf4j" % "slf4j-log4j12" % "1.7.5",
-        "junit" % "junit" % "4.11" % "test",
         "org.specs2" %% "specs2" % "2.1" % "test",
-        "org.mockito" % "mockito-core" % "1.9.5" % "test"
+        "org.mockito" % "mockito-core" % "1.9.5" % "test",
+        "com.novocode" % "junit-interface" % "0.10" % "test->default",
+        "junit" % "junit" % "4.11" % "test"
       ),
       jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8"))
     )
@@ -58,9 +61,10 @@ object AppBuild extends Build {
     settings = Defaults.defaultSettings ++ buildSettings ++ site.sphinxSupport()
             ++ packSettings ++ Seq(distTask))
     .settings(
-      packMain    := Map("launch" -> "com.github.tkmtmkt.Main"),
-      packJvmOpts := Map("launch" -> Seq("-Xmx512m")),
-      packExclude := Seq(root.id)
+      publishArtifact := false,
+      packMain        := Map("launch" -> "com.github.tkmtmkt.Main"),
+      packJvmOpts     := Map("launch" -> Seq("-Xmx512m")),
+      packExclude     := Seq(root.id)
     )
 
   // PROJECT: サブプロジェクト設定
