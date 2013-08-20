@@ -2,6 +2,12 @@
 *.log
 lib/
 
+# eclipse
+.project
+.classpath
+.settings/
+.cache
+
 # sbt specific
 dist/*
 target/
@@ -14,7 +20,3 @@ sbt/repository/
 
 # Scala-IDE specific
 .scala_dependencies
-
-.classpath
-.project
-.settings/
