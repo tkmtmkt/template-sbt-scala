@@ -6,7 +6,7 @@ import com.typesafe.sbt.SbtSite.site
 import de.johoop.findbugs4sbt.FindBugs.findbugsSettings
 import de.johoop.jacoco4sbt.{ HTMLReport, XMLReport }
 import de.johoop.jacoco4sbt.JacocoPlugin.jacoco
-import net.ruidoblanco.checkstyle4sbt.CheckStyle.checkstyleSettings
+import net.ruidoblanco.checkstyle4sbt.CheckStyle._
 import xerial.sbt.Pack._
 
 object AppBuild extends Build {
@@ -49,6 +49,7 @@ object AppBuild extends Build {
         "com.novocode" % "junit-interface" % "0.10" % "test->default",
         "junit" % "junit" % "4.11" % "test"
       ),
+      checkstyleConfigurationFile <<= (baseDirectory in root)(_ / "project" / "sun_checks.xml"),
       jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8"))
     )
 
