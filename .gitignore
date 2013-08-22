@@ -9,14 +9,15 @@ lib/
 .cache
 
 # sbt specific
-dist/*
+.history
 target/
 lib_managed/
 src_managed/
-project/boot/
-project/plugins/project/
-sbt/boot/
-sbt/repository/
+/project/boot/
+/project/plugins/project/
+/sbt/boot/
+/sbt/repository/*
+!/sbt/repository/local
 
 # Scala-IDE specific
 .scala_dependencies
