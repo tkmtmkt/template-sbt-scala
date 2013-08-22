@@ -1,6 +1,9 @@
 //eclipse設定ファイル作成
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.2.0")
 
+//antタスクを実行する
+addSbtPlugin("de.johoop" % "ant4sbt" % "1.1.0")
+
 //Checkstyle（ソースコードの静的解析を行う）
 addSbtPlugin("net.ruidoblanco" % "checkstyle4sbt" % "0.0.1")
 

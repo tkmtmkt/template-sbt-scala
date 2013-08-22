@@ -3,6 +3,7 @@ import Keys._
 
 import com.orrsella.sbtstats.StatsPlugin._
 import com.typesafe.sbt.SbtSite.site
+import de.johoop.ant4sbt.Ant4Sbt._
 import de.johoop.cpd4sbt.CopyPasteDetector._
 import de.johoop.findbugs4sbt.FindBugs.findbugsSettings
 import de.johoop.jacoco4sbt.{ HTMLReport, XMLReport }
@@ -32,7 +33,7 @@ object AppBuild extends Build {
         "-quiet"),
       crossPaths := false,
       fork := true
-    ) ++ site.settings ++ MyEclipse.eclipseSettings
+    ) ++ antSettings ++ site.settings ++ MyEclipse.eclipseSettings
 
   // SETTING: サブプロジェクト共通設定
   def subProject(nameString: String, path: File) = Project(
