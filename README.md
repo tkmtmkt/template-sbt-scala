@@ -15,9 +15,9 @@ sbtコンソール起動
 sbtコンソールで使用するタスク
 
     eclipse         Eclipseプロジェクト設定ファイルを生成する
-    compile         コンパイル
     checkstyle      ソースコードの静的解析を行う
     findbugs        コンパイル後のクラスファイルを解析する
+    compile         コンパイル
     test            ユニットテスト
     jacoco:cover    カバレッジを計測する
     make-site       サイト用のHTMLファイルを生成する

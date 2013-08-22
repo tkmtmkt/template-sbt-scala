@@ -3,6 +3,7 @@ import Keys._
 
 import com.orrsella.sbtstats.StatsPlugin._
 import com.typesafe.sbt.SbtSite.site
+import de.johoop.cpd4sbt.CopyPasteDetector._
 import de.johoop.findbugs4sbt.FindBugs.findbugsSettings
 import de.johoop.jacoco4sbt.{ HTMLReport, XMLReport }
 import de.johoop.jacoco4sbt.JacocoPlugin.jacoco
@@ -38,7 +39,7 @@ object AppBuild extends Build {
     id = nameString,
     base = path,
     settings = Defaults.defaultSettings ++ buildSettings ++ site.includeScaladoc()
-            ++ checkstyleSettings ++ findbugsSettings ++ jacoco.settings)
+            ++ checkstyleSettings ++ findbugsSettings ++ cpdSettings ++ jacoco.settings)
     .settings(
       unmanagedBase <<= unmanagedBase in root,
       retrieveManaged := true,

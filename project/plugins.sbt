@@ -7,6 +7,9 @@ addSbtPlugin("net.ruidoblanco" % "checkstyle4sbt" % "0.0.1")
 //FindBugs（コンパイル後のクラスファイルを解析する）
 addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.2.0")
 
+//PMD/CPD（コピー／ペースト箇所を検出する）
+addSbtPlugin("de.johoop" % "cpd4sbt" % "1.1.2")
+
 //カバレッジ計測（Java Code Coverage Library）
 addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.0.0")
 
