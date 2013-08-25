@@ -5,7 +5,7 @@
     <artifactId>checkstyle4sbt</artifactId>
     <packaging>jar</packaging>
     <description>checkstyle4sbt</description>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>checkstyle4sbt</name>
     <organization>
         <name>net.ruidoblanco</name>

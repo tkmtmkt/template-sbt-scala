@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="com.orrsella" module="sbt-stats" revision="1.0.4-SNAPSHOT" status="integration" publication="20130821022157" e:scalaVersion="2.9.2" e:sbtVersion="0.12">
+	<info organisation="com.orrsella" module="sbt-stats" revision="1.0.4-SNAPSHOT" status="integration" publication="20130824200012" e:scalaVersion="2.9.2" e:sbtVersion="0.12">
 		<description>
 		sbt-stats
 		</description>
