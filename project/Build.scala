@@ -14,26 +14,26 @@ import xerial.sbt.Pack._
 object AppBuild extends Build {
   // SETTING: プロジェクト共通設定
   lazy val buildSettings = Seq(
-      organization  := "com.github.tkmtmkt",
-      description   := "sbtプロジェクトテンプレート",
-      version       := "0.1-SNAPSHOT",
-      scalaVersion  := "2.10.2",
-      scalacOptions := Seq(
-        "-encoding", "UTF-8",
-        "-deprecation",
-        "-unchecked"),
-      javacOptions in Compile := Seq(
-        "-encoding", "UTF-8",
-        "-source", "1.7",
-        "-target", "1.7",
-        "-Xlint:all,-unchecked"),
-      javacOptions in (Compile, doc) := Seq(
-        "-encoding", "UTF-8",
-        "-source", "1.7",
-        "-quiet"),
-      crossPaths := false,
-      fork := true
-    ) ++ antSettings ++ site.settings ++ MyEclipse.eclipseSettings
+    organization  := "com.github.tkmtmkt",
+    description   := "sbtプロジェクトテンプレート",
+    version       := "0.1-SNAPSHOT",
+    scalaVersion  := "2.10.2",
+    scalacOptions := Seq(
+      "-encoding", "UTF-8",
+      "-deprecation",
+      "-unchecked"),
+    javacOptions in Compile := Seq(
+      "-encoding", "UTF-8",
+      "-source", "1.7",
+      "-target", "1.7",
+      "-Xlint:all,-unchecked"),
+    javacOptions in (Compile, doc) := Seq(
+      "-encoding", "UTF-8",
+      "-source", "1.7",
+      "-quiet"),
+    crossPaths := false,
+    fork := true
+  ) ++ antSettings ++ site.settings ++ MyEclipse.eclipseSettings
 
   // SETTING: サブプロジェクト共通設定
   def subProject(nameString: String, path: File) = Project(
