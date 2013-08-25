@@ -5,7 +5,7 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.6.2")
 addSbtPlugin("com.eed3si9n" % "sbt-man" % "0.1.0")
 
 //ローカルリポジトリとキャッシュからプロジェクトの配布物を削除する。
-addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.0.2-SNAPSHOT")
+addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0-SNAPSHOT")
 
 //ソースファイルの統計情報を表示する。
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.4-SNAPSHOT")
