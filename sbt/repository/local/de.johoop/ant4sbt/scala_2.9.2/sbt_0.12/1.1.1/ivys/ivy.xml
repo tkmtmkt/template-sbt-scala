@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="de.johoop" module="ant4sbt" revision="1.1.1-SNAPSHOT" status="integration" publication="20130824204948" e:scalaVersion="2.9.2" e:sbtVersion="0.12">
+	<info organisation="de.johoop" module="ant4sbt" revision="1.1.1" status="release" publication="20130825215626" e:scalaVersion="2.9.2" e:sbtVersion="0.12">
 		<description>
 		ant4sbt
 		</description>

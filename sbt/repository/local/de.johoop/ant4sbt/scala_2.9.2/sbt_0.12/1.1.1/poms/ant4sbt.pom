@@ -5,7 +5,7 @@
     <artifactId>ant4sbt</artifactId>
     <packaging>jar</packaging>
     <description>ant4sbt</description>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
     <name>ant4sbt</name>
     <organization>
         <name>de.johoop</name>
@@ -32,6 +32,10 @@
             <id>asflierl</id>
             <name>Andreas Flierl</name>
             <url>http://flierl.eu</url>
+        </developer>
+        <developer>
+            <id>tkmtmkt</id>
+            <name>tkmtmkt</name>
         </developer>
     </developers>
     <properties>
