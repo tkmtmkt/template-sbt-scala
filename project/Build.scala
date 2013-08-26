@@ -1,7 +1,6 @@
 import sbt._
 import Keys._
 
-import com.orrsella.sbtstats.StatsPlugin._
 import com.typesafe.sbt.SbtSite.site
 import de.johoop.ant4sbt.Ant4Sbt._
 import de.johoop.cpd4sbt.CopyPasteDetector._
