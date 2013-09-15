@@ -1,19 +1,13 @@
 package com.github.tkmtmkt;
 
-import com.tangosol.io.pof.annotation.Portable;
-import com.tangosol.io.pof.annotation.PortableProperty;
-
 /**
  * @author takamatu
  *
  */
-@Portable
-public class BookB
+public class BookJ
 {
-    @PortableProperty
     private String title;
 
-    @PortableProperty
     private String author;
 
     public String getTitle() {
