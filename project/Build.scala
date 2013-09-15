@@ -7,6 +7,7 @@ import de.johoop.cpd4sbt.CopyPasteDetector._
 import de.johoop.findbugs4sbt.FindBugs.findbugsSettings
 import de.johoop.jacoco4sbt.{ HTMLReport, XMLReport }
 import de.johoop.jacoco4sbt.JacocoPlugin.jacoco
+import eu.henkelmann.sbt.JUnitXmlTestsListener
 import net.ruidoblanco.checkstyle4sbt.CheckStyle._
 import xerial.sbt.Pack._
 
@@ -51,7 +52,9 @@ object AppBuild extends Build {
         "junit" % "junit" % "4.11" % "test"
       ),
       checkstyleConfigurationFile <<= (baseDirectory in root)(_ / "project" / "sun_checks.xml"),
-      jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8"))
+      testListeners <<= target.map(t => Seq(new JUnitXmlTestsListener(t.getAbsolutePath))),
+      jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8")),
+      parallelExecution in Test := false
     )
 
   // PROJECT: ルートプロジェクト設定

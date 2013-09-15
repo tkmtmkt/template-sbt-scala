@@ -13,6 +13,9 @@ addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.2.1")
 //PMD/CPD（コピー／ペースト箇所を検出する）
 addSbtPlugin("de.johoop" % "cpd4sbt" % "1.1.3")
 
+//
+addSbtPlugin("eu.henkelmann" % "junit_xml_listener" % "0.4-SNAPSHOT")
+
 //カバレッジ計測（Java Code Coverage Library）
 addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.1")
 
