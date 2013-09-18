@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="eu.henkelmann" module="junit_xml_listener" revision="0.4-SNAPSHOT" status="integration" publication="20130917221322" e:scalaVersion="2.10" e:sbtVersion="0.13">
+	<info organisation="eu.henkelmann" module="junit_xml_listener" revision="0.4-SNAPSHOT" status="integration" publication="20130919045333" e:scalaVersion="2.10" e:sbtVersion="0.13">
 		<description>
 		A simple plugin that outputs JUnit-Style XML Files that contain Test results.
 		</description>
