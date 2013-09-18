@@ -20,6 +20,7 @@ object AppBuild extends Build {
     scalaVersion  := "2.10.2",
     scalacOptions := Seq(
       "-encoding", "UTF-8",
+      "-target:jvm-1.7",
       "-deprecation",
       "-unchecked"),
     javacOptions in Compile := Seq(
