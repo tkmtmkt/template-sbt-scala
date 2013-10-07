@@ -69,7 +69,12 @@ object AppBuild extends Build {
     aggregate = nonRoots,
     settings = Defaults.defaultSettings ++ buildSettings ++ site.sphinxSupport()
             ++ packSettings ++ Seq(MyTask.distTask))
+    .configs(IntegrationTest)
+    .settings(Defaults.itSettings : _*)
     .settings(
+      libraryDependencies ++= Seq(
+        "org.specs2" %% "specs2" % "2.1" % "it"
+      ),
       publishArtifact := false,
       packMain        := Map("launch" -> "com.github.tkmtmkt.Main"),
       packJvmOpts     := Map("launch" -> Seq("-Xmx512m")),
