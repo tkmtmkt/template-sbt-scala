@@ -68,7 +68,7 @@ object AppBuild extends Build {
     base = file("."),
     aggregate = nonRoots,
     settings = Defaults.defaultSettings ++ buildSettings ++ site.sphinxSupport()
-            ++ packSettings ++ Seq(MyTask.distTask))
+            ++ packSettings ++ MyTask.settings)
     .configs(IntegrationTest)
     .settings(Defaults.itSettings : _*)
     .settings(

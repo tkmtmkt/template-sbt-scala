@@ -4,16 +4,28 @@ import Keys._
 import xerial.sbt.Pack._
 
 object MyTask {
+  lazy val settings = Seq(listMethodsTask, distTask)
+
+  lazy val listMethods = TaskKey[Unit]("list-methods")
+  def listMethodsTask  = listMethods <<= (
+    sources in Compile, compile in Compile, target, streams
+  ) map {
+    (sources, analysis, target, s) => {
+      s.log.info("Create Class Methods list")
+      printf(sources.toString + "\n")
+    }
+  }
+
   // カスタムタスク
   lazy val dist = TaskKey[Unit]("dist")
   def distTask = dist <<= (
-      streams, pack,
-      baseDirectory in Compile
+      baseDirectory in Compile,
+      pack, streams
     ) map {
-      (out, pack, base) =>
+      (base, pack, s) =>
       {
         // リソースファイルコピー
-        out.log.info("Copy resource files")
+        s.log.info("Copy resource files")
         IO.copyDirectory(base / "appData/src/main/resources", pack)
       }
     }
