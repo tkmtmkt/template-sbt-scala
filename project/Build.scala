@@ -27,7 +27,7 @@ object AppBuild extends Build {
       "-encoding", "UTF-8",
       "-source", "1.7",
       "-target", "1.7",
-      "-Xlint:all,-unchecked"),
+      "-Xlint:all"),
     javacOptions in (Compile, doc) := Seq(
       "-encoding", "UTF-8",
       "-source", "1.7",
@@ -51,12 +51,13 @@ object AppBuild extends Build {
         "org.mockito" % "mockito-core" % "1.9.5" % "test",
         "org.powermock" % "powermock-module-junit4" % "1.5.1" % "test",
         "org.powermock" % "powermock-api-mockito" % "1.5.1" % "test",
-        "com.novocode" % "junit-interface" % "0.10" % "test->default",
+        "com.novocode" % "junit-interface" % "0.10" % "test",
         "junit" % "junit" % "4.11" % "test"
       ),
       checkstyleConfigurationFile <<= (baseDirectory in root)(_ / "project" / "sun_checks.xml"),
       testListeners <<= target.map(t => Seq(new JUnitXmlTestsListener(t.getAbsolutePath))),
       jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8")),
+      parallelExecution in jacoco.Config := false,
       parallelExecution in Test := false
     )
 
@@ -67,7 +68,7 @@ object AppBuild extends Build {
     base = file("."),
     aggregate = nonRoots,
     settings = Defaults.defaultSettings ++ buildSettings ++ site.sphinxSupport()
-            ++ packSettings ++ Seq(distTask))
+            ++ packSettings ++ Seq(MyTask.distTask))
     .settings(
       publishArtifact := false,
       packMain        := Map("launch" -> "com.github.tkmtmkt.Main"),
@@ -79,20 +80,5 @@ object AppBuild extends Build {
   lazy val appMain = subProject("app-main", file("app-main")) dependsOn (appData)
 
   lazy val appData = subProject("app-data", file("app-data"))
-
-  // カスタムタスク
-  lazy val dist = TaskKey[Unit]("dist")
-  def distTask = dist <<= (
-      streams, pack,
-      baseDirectory in root in Compile,
-      baseDirectory in appData in Compile
-    ) map {
-      (out, pack, rootDir, dataDir) =>
-      {
-        // リソースファイルコピー
-        out.log.info("Copy resource files")
-        IO.copyDirectory(dataDir / "src/main/resources", pack)
-      }
-    }
 }
 // vim: set ts=2 sw=2 et:
