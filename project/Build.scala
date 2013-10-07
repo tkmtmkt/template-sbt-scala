@@ -49,6 +49,8 @@ object AppBuild extends Build {
         "org.slf4j" % "slf4j-log4j12" % "1.7.5",
         "org.specs2" %% "specs2" % "2.1" % "test",
         "org.mockito" % "mockito-core" % "1.9.5" % "test",
+        "org.powermock" % "powermock-module-junit4" % "1.5.1" % "test",
+        "org.powermock" % "powermock-api-mockito" % "1.5.1" % "test",
         "com.novocode" % "junit-interface" % "0.10" % "test->default",
         "junit" % "junit" % "4.11" % "test"
       ),
