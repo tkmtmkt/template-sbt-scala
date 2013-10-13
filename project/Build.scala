@@ -31,7 +31,9 @@ object AppBuild extends Build {
     javacOptions in (Compile, doc) := Seq(
       "-encoding", "UTF-8",
       "-source", "1.7",
-      "-quiet"),
+      "-quiet",
+      "-notimestamp",
+      "-linksource"),
     crossPaths := false,
     fork := true
   ) ++ antSettings ++ site.settings ++ MyEclipse.eclipseSettings
