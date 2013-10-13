@@ -5,7 +5,7 @@
     <artifactId>sbt-pack</artifactId>
     <packaging>jar</packaging>
     <description>A sbt plugin for packaging distributable Scala code</description>
-    <version>0.3.2-SNAPSHOT</version>
+    <version>0.3.2</version>
     <name>sbt-pack</name>
     <organization>
         <name>Xerial project</name>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.2</version>
+            <version>2.10.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
