@@ -58,9 +58,10 @@ object AppBuild extends Build {
       ),
       checkstyleConfigurationFile := (baseDirectory in root).value / "project/sun_checks.xml",
       testListeners := Seq(new JUnitXmlTestsListener(crossTarget.value.getAbsolutePath)),
-      jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8")),
+      parallelExecution in Test := false,
       parallelExecution in jacoco.Config := false,
-      parallelExecution in Test := false
+      jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8")),
+      fork in jacoco.Config := false
     )
 
   // PROJECT: ルートプロジェクト設定
