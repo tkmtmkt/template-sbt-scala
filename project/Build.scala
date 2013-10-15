@@ -45,7 +45,7 @@ object AppBuild extends Build {
     settings = Defaults.defaultSettings ++ buildSettings ++ site.includeScaladoc()
             ++ checkstyleSettings ++ findbugsSettings ++ cpdSettings ++ jacoco.settings)
     .settings(
-      unmanagedBase <<= unmanagedBase in root,
+      unmanagedBase := (unmanagedBase in root).value,
       retrieveManaged := true,
       libraryDependencies ++= Seq(
         "org.slf4j" % "slf4j-log4j12" % "1.7.5",
@@ -56,8 +56,8 @@ object AppBuild extends Build {
         "com.novocode" % "junit-interface" % "0.10" % "test",
         "junit" % "junit" % "4.11" % "test"
       ),
-      checkstyleConfigurationFile <<= (baseDirectory in root)(_ / "project" / "sun_checks.xml"),
-      testListeners <<= target.map(t => Seq(new JUnitXmlTestsListener(t.getAbsolutePath))),
+      checkstyleConfigurationFile := (baseDirectory in root).value / "project/sun_checks.xml",
+      testListeners := Seq(new JUnitXmlTestsListener(crossTarget.value.getAbsolutePath)),
       jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8")),
       parallelExecution in jacoco.Config := false,
       parallelExecution in Test := false
