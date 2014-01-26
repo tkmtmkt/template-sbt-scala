@@ -1,5 +1,5 @@
 //eclipse設定ファイル作成
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.4.0")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0-SNAPSHOT")
 
 //antタスクを実行する
 addSbtPlugin("de.johoop" % "ant4sbt" % "1.1.2")
@@ -17,12 +17,12 @@ addSbtPlugin("de.johoop" % "cpd4sbt" % "1.1.4")
 addSbtPlugin("eu.henkelmann" % "junit_xml_listener" % "0.4-SNAPSHOT")
 
 //カバレッジ計測（Java Code Coverage Library）
-addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.2")
+addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.4")
 
 //ドキュメント作成
 addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.7.2-SNAPSHOT")
 
 //配布ファイル作成
-addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.3.5")
+addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.4.0")
 
 // vim: set ts=2 sw=2 et:
