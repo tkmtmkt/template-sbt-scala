@@ -60,6 +60,7 @@ object AppBuild extends Build {
       testListeners := Seq(new JUnitXmlTestsListener(crossTarget.value.getAbsolutePath)),
       parallelExecution in Test := false,
       parallelExecution in jacoco.Config := false,
+      jacoco.reportTitle in jacoco.Config := s"${thisProject.value.id}-${version.value}",
       jacoco.reportFormats in jacoco.Config := Seq(XMLReport("UTF-8"), HTMLReport("UTF-8")),
       fork in jacoco.Config := false
     )
