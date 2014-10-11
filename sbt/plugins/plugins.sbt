@@ -1,5 +1,5 @@
 //sbtコンソール内でgitコマンドを使用可能にする。
-addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.6.3")
+addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.6.4")
 
 //sbtコンソールでAPIマニュアルを参照可能にする。
 addSbtPlugin("com.eed3si9n" % "sbt-man" % "0.1.1")
