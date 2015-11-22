@@ -20,7 +20,7 @@ addSbtPlugin("eu.henkelmann" % "junit_xml_listener" % "0.4-SNAPSHOT")
 addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.6")
 
 //ドキュメント作成
-addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.8.1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.8.2")
 
 //配布ファイル作成
 addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.7.7")

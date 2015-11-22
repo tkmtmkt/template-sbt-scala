@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="com.typesafe.sbt" module="sbt-site" revision="0.8.1" status="release" publication="20141011180515" e:scalaVersion="2.10" e:sbtVersion="0.13">
+	<info organisation="com.typesafe.sbt" module="sbt-site" revision="0.8.2" status="release" publication="20151122141147" e:scalaVersion="2.10" e:sbtVersion="0.13">
+		<license name="BSD 3-Clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
 		<description>
 		sbt-site
 		</description>
@@ -29,12 +30,16 @@
 	</publications>
 	<dependencies>
 		
-		<dependency org="org.scala-lang" name="scala-library" rev="2.10.4" conf="provided->default(compile)"/>
-		<dependency org="org.scala-sbt" name="sbt" rev="0.13.0" conf="provided->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.10.6" conf="provided->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt" rev="0.13.9" conf="provided->default(compile)"/>
 		<dependency org="net.databinder" name="unfiltered-jetty_2.10" rev="0.6.8" conf="compile->default(compile)"/>
 		<dependency org="net.databinder" name="pamflet-library_2.10" rev="0.6.0" conf="compile->default(compile)"/>
 		<dependency org="org.yaml" name="snakeyaml" rev="1.13" conf="compile->default(compile)"/>
+		<dependency org="org.asciidoctor" name="asciidoctorj" rev="1.5.2" conf="compile->default(compile)"/>
 		
 		
+		<override org="org.scala-lang" module="scala-library" matcher="exact" rev="2.10.6"/>
+		<override org="org.scala-lang" module="scala-compiler" matcher="exact" rev="2.10.6"/>
+		<override org="org.scala-lang" module="scala-reflect" matcher="exact" rev="2.10.6"/>
 	</dependencies>
 </ivy-module>
