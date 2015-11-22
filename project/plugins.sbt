@@ -5,7 +5,7 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
 addSbtPlugin("de.johoop" % "ant4sbt" % "1.1.2")
 
 //Checkstyle（ソースコードの静的解析を行う）
-addSbtPlugin("net.ruidoblanco" % "checkstyle4sbt" % "1.1.7")
+addSbtPlugin("net.ruidoblanco" % "checkstyle4sbt" % "0.0.2")
 
 //FindBugs（コンパイル後のクラスファイルを解析する）
 addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.3.0")
