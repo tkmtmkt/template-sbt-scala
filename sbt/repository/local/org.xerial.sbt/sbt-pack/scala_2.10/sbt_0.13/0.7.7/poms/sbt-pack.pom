@@ -5,7 +5,7 @@
     <artifactId>sbt-pack</artifactId>
     <packaging>jar</packaging>
     <description>A sbt plugin for packaging distributable Scala code</description>
-    <version>0.6.2</version>
+    <version>0.7.7</version>
     <name>sbt-pack</name>
     <organization>
         <name>Xerial project</name>
@@ -38,13 +38,13 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.3</version>
+            <version>2.10.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.scala-sbt</groupId>
             <artifactId>sbt</artifactId>
-            <version>0.13.5</version>
+            <version>0.13.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -53,14 +53,25 @@
             <version>1.6.1</version>
         </dependency>
         <dependency>
-            <groupId>org.kamranzafar</groupId>
-            <artifactId>jtar</artifactId>
-            <version>2.2</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tukaani</groupId>
+            <artifactId>xz</artifactId>
+            <version>1.5</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
+            <artifactId>slf4j-simple</artifactId>
             <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.10</artifactId>
+            <version>2.4.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
