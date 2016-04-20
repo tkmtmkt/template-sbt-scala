@@ -17,7 +17,7 @@ object AppBuild extends Build {
     organization  := "com.github.tkmtmkt",
     description   := "sbtプロジェクトテンプレート",
     version       := "0.1-SNAPSHOT",
-    scalaVersion  := "2.10.3",
+    scalaVersion  := "2.11.8",
     scalacOptions := Seq(
       "-encoding", "UTF-8",
       "-target:jvm-1.7",
@@ -48,13 +48,13 @@ object AppBuild extends Build {
       unmanagedBase := (unmanagedBase in root).value,
       retrieveManaged := true,
       libraryDependencies ++= Seq(
-        "org.slf4j" % "slf4j-log4j12" % "1.7.5",
-        "org.specs2" %% "specs2" % "2.3.7" % "test",
-        "org.mockito" % "mockito-all" % "1.9.5" % "test",
-        "org.powermock" % "powermock-module-junit4" % "1.5.3" % "test",
-        "org.powermock" % "powermock-api-mockito" % "1.5.3" % "test",
-        "com.novocode" % "junit-interface" % "0.10" % "test",
-        "junit" % "junit" % "4.11" % "test"
+        "org.slf4j" % "slf4j-log4j12" % "1.7.21",
+        "org.specs2" %% "specs2" % "3.7" % "test",
+        "org.mockito" % "mockito-all" % "1.10.19" % "test",
+        "org.powermock" % "powermock-module-junit4" % "1.6.4" % "test",
+        "org.powermock" % "powermock-api-mockito" % "1.6.4" % "test",
+        "com.novocode" % "junit-interface" % "0.11" % "test",
+        "junit" % "junit" % "4.12" % "test"
       ),
       checkstyleConfigurationFile := (baseDirectory in root).value / "project/sun_checks.xml",
       testListeners := Seq(new JUnitXmlTestsListener(crossTarget.value.getAbsolutePath)),
@@ -77,7 +77,7 @@ object AppBuild extends Build {
     .settings(Defaults.itSettings : _*)
     .settings(
       libraryDependencies ++= Seq(
-        "org.specs2" %% "specs2" % "2.1" % "it"
+        "org.specs2" %% "specs2" % "3.7" % "it"
       ),
       publishArtifact := false,
       packMain        := Map("launch" -> "com.github.tkmtmkt.Main"),
