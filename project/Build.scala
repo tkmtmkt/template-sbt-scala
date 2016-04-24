@@ -35,7 +35,7 @@ object AppBuild extends Build {
       "-linksource"),
     crossPaths := false,
     fork := true
-  ) ++ antSettings ++ MyEclipse.eclipseSettings
+  )
 
   // SETTING: サブプロジェクト共通設定
   def subProject(nameString: String, path: File) = Project(
