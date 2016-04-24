@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="org.xerial.sbt" module="sbt-pack" revision="0.7.7" status="release" publication="20151122105226" e:scalaVersion="2.10" e:sbtVersion="0.13">
+	<info organisation="org.xerial.sbt" module="sbt-pack" revision="0.7.9" status="release" publication="20160424105820" e:sbtVersion="0.13" e:scalaVersion="2.10">
 		<description>
 		A sbt plugin for packaging distributable Scala code
 		</description>

@@ -23,6 +23,6 @@ addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.6")
 addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.8.2")
 
 //配布ファイル作成
-addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.7.7")
+addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.7.9")
 
 // vim: set ts=2 sw=2 et:
