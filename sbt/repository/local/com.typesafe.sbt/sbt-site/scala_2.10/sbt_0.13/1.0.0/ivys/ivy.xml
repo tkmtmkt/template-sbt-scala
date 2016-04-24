@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="com.typesafe.sbt" module="sbt-site" revision="0.8.2" status="release" publication="20151122141147" e:scalaVersion="2.10" e:sbtVersion="0.13">
+	<info organisation="com.typesafe.sbt" module="sbt-site" revision="1.0.0" status="release" publication="20160424110651" e:sbtVersion="0.13" e:scalaVersion="2.10">
 		<license name="BSD 3-Clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
 		<description>
 		sbt-site
@@ -35,6 +35,7 @@
 		<dependency org="net.databinder" name="unfiltered-jetty_2.10" rev="0.6.8" conf="compile->default(compile)"/>
 		<dependency org="net.databinder" name="pamflet-library_2.10" rev="0.6.0" conf="compile->default(compile)"/>
 		<dependency org="org.yaml" name="snakeyaml" rev="1.13" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe" name="config" rev="1.2.1" conf="compile->default(compile)"/>
 		<dependency org="org.asciidoctor" name="asciidoctorj" rev="1.5.2" conf="compile->default(compile)"/>
 		
 		

@@ -1,7 +1,6 @@
 import sbt._
 import Keys._
 
-import com.typesafe.sbt.SbtSite.site
 import de.johoop.ant4sbt.Ant4Sbt._
 import de.johoop.cpd4sbt.CopyPasteDetector._
 import de.johoop.findbugs4sbt.FindBugs.findbugsSettings
@@ -36,13 +35,13 @@ object AppBuild extends Build {
       "-linksource"),
     crossPaths := false,
     fork := true
-  ) ++ antSettings ++ site.settings ++ MyEclipse.eclipseSettings
+  ) ++ antSettings ++ MyEclipse.eclipseSettings
 
   // SETTING: サブプロジェクト共通設定
   def subProject(nameString: String, path: File) = Project(
     id = nameString,
     base = file("module/" + path),
-    settings = Defaults.defaultSettings ++ buildSettings ++ site.includeScaladoc()
+    settings = Defaults.defaultSettings ++ buildSettings
             ++ checkstyleSettings ++ findbugsSettings ++ cpdSettings ++ jacoco.settings)
     .settings(
       unmanagedBase := (unmanagedBase in root).value,
@@ -71,7 +70,7 @@ object AppBuild extends Build {
     id = "root",
     base = file("."),
     aggregate = nonRoots,
-    settings = Defaults.defaultSettings ++ buildSettings ++ site.sphinxSupport()
+    settings = Defaults.defaultSettings ++ buildSettings
             ++ packSettings ++ MyTask.settings)
     .configs(IntegrationTest)
     .settings(Defaults.itSettings : _*)
